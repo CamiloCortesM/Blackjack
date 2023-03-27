@@ -22,9 +22,6 @@ const createDeck = () => {
       deck.push(sp + type);
     }
   }
-
-  console.log(deck);
-
   deck = _.shuffle(deck);
   console.log(deck);
 
@@ -32,3 +29,12 @@ const createDeck = () => {
 };
 
 createDeck();
+
+const orderCard = () => {
+  if (deck.length === 0) {
+    throw "no cards in the deck";
+  }
+  return deck.pop();
+};
+
+console.log(orderCard());
