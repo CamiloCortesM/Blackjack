@@ -9,6 +9,14 @@ let deck = [];
 const types = ["C", "D", "H", "S"];
 const specials = ["A", "J", "Q", "K"];
 
+let pointsPlayer = 0,
+  pointsComputer;
+
+//references of HTML
+
+const btnOrder = document.querySelector("#btnOrder");
+const score = document.querySelectorAll("small");
+
 const createDeck = () => {
   for (let i = 2; i <= 10; i++) {
     // deck.push(i + "C");
@@ -23,7 +31,6 @@ const createDeck = () => {
     }
   }
   deck = _.shuffle(deck);
-  console.log(deck);
 
   return deck;
 };
@@ -37,9 +44,15 @@ const orderCard = () => {
   return deck.pop();
 };
 
-console.log(orderCard());
-
 const cardValue = (card) => {
   const value = card.substring(0, card.length - 1);
   return isNaN(value) ? (value === "A" ? 11 : 10) : value * 1;
 };
+
+//Events
+
+btnOrder.addEventListener("click", () => {
+  const card = orderCard();
+  pointsPlayer = pointsPlayer + cardValue(card);
+  score[0].innerText = pointsPlayer;
+});
