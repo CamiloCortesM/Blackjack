@@ -1,4 +1,4 @@
-import { createDeck } from "./usecases/create-deck";
+import { cardValue, createDeck, orderCard } from "./usecases";
 
 let deck = [];
 const types = ["C", "D", "H", "S"],
@@ -27,18 +27,6 @@ const initGame = (numPlayers = 2) => {
   divCardPlayers.forEach((elem) => (elem.innerHTML = ""));
   btnStop.disabled = false;
   btnOrder.disabled = false;
-};
-
-const orderCard = () => {
-  if (deck.length === 0) {
-    throw "no cards in the deck";
-  }
-  return deck.pop();
-};
-
-const cardValue = (card) => {
-  const value = card.substring(0, card.length - 1);
-  return isNaN(value) ? (value === "A" ? 11 : 10) : value * 1;
 };
 
 //turn: 0 = firts player and last number is the computer
@@ -74,7 +62,7 @@ const determineWinner = () => {
 //turn of machine
 const turnComputer = (minimumPoints) => {
   do {
-    const card = orderCard();
+    const card = orderCard(deck);
     accumulatePoints(card, pointsPlayers.length - 1);
     createCard(card, pointsPlayers.length - 1);
   } while (
@@ -87,7 +75,7 @@ const turnComputer = (minimumPoints) => {
 //Events
 
 btnOrder.addEventListener("click", () => {
-  const card = orderCard();
+  const card = orderCard(deck);
   const pointsPlayer = accumulatePoints(card, 0);
   createCard(card, 0);
 

@@ -1,7 +1,7 @@
 /**
  *this function calculates the value of the card
  * @param {String} card
- * @returns {number}
+ * @returns {Number}
  */
 
 export const cardValue = (card) => {
