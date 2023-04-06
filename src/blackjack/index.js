@@ -1,4 +1,10 @@
-import { cardValue, createDeck, orderCard } from "./usecases";
+import {
+  accumulatePoints,
+  createCard,
+  createDeck,
+  orderCard,
+  turnComputer,
+} from "./usecases";
 
 let deck = [];
 const types = ["C", "D", "H", "S"],
@@ -29,72 +35,29 @@ const initGame = (numPlayers = 2) => {
   btnOrder.disabled = false;
 };
 
-//turn: 0 = firts player and last number is the computer
-const accumulatePoints = (card, turn) => {
-  pointsPlayers[turn] = pointsPlayers[turn] + cardValue(card);
-  score[turn].innerText = pointsPlayers[turn];
-  return pointsPlayers[turn];
-};
-
-const createCard = (card, turn) => {
-  const imgCard = document.createElement("img");
-  imgCard.src = `assets/cards/${card}.png`;
-  imgCard.alt = "card";
-  imgCard.classList.add("item_card");
-  divCardPlayers[turn].append(imgCard);
-};
-
-const determineWinner = () => {
-  const [minimumPoints, pointsComputer] = pointsPlayers;
-  setTimeout(() => {
-    alert(
-      (pointsComputer > minimumPoints && pointsComputer < 21) ||
-        minimumPoints > 21
-        ? "You Lose"
-        : (minimumPoints > pointsComputer && minimumPoints <= 21) ||
-          pointsComputer > 21
-        ? "You win"
-        : "Nobody won"
-    );
-  }, 100);
-};
-
-//turn of machine
-const turnComputer = (minimumPoints) => {
-  do {
-    const card = orderCard(deck);
-    accumulatePoints(card, pointsPlayers.length - 1);
-    createCard(card, pointsPlayers.length - 1);
-  } while (
-    pointsPlayers[pointsPlayers.length - 1] < minimumPoints &&
-    minimumPoints <= 21
-  );
-  determineWinner();
-};
-
 //Events
 
 btnOrder.addEventListener("click", () => {
   const card = orderCard(deck);
-  const pointsPlayer = accumulatePoints(card, 0);
-  createCard(card, 0);
+  const pointsPlayer = accumulatePoints(card, 0, pointsPlayers, score);
+  createCard(card, 0, divCardPlayers);
 
   if (pointsPlayer > 21) {
     btnStop.disabled = true;
     btnOrder.disabled = true;
-    turnComputer(pointsPlayer);
+    turnComputer(pointsPlayers, score, divCardPlayers, deck);
   } else if (pointsPlayer === 21) {
     console.warn("21, amazing!");
     btnStop.disabled = true;
     btnOrder.disabled = true;
-    turnComputer(pointsPlayer);
+    turnComputer(pointsPlayers, score, divCardPlayers, deck);
   }
 });
 
 btnStop.addEventListener("click", () => {
   btnStop.disabled = true;
   btnOrder.disabled = true;
-  turnComputer(pointsPlayers[0]);
+  turnComputer(pointsPlayers, score, divCardPlayers, deck);
 });
 
 btnNew.addEventListener("click", () => {
