@@ -5,7 +5,7 @@ import { cardValue } from "./card-value";
  * @param {String} card
  * @param {Number} turn
  * @param {Array<Number>} pointsPlayers
- * @param {Object} score
+ * @param {NodeList} score
  * @returns {Number}
  */
 export const accumulatePoints = (card, turn, pointsPlayers, score) => {
