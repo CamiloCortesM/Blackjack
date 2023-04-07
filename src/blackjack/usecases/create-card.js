@@ -2,7 +2,7 @@
  *
  * @param {String} card
  * @param {Number} turn
- * @param {Object} divCardPlayers
+ * @param {NodeList} divCardPlayers
  */
 
 export const createCard = (card, turn, divCardPlayers) => {
