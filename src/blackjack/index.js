@@ -37,8 +37,8 @@ const initGame = (numPlayers = 2) => {
   divCardPlayers.forEach((elem) => (elem.innerHTML = ""));
   btnStop.disabled = false;
   btnOrder.disabled = false;
-  btnOrderImage.src = "/public/assets/img/plus-circle-svgrepo-com.svg";
-  btnStopImage.src = "/public/assets/img/hand-svgrepo-com.svg";
+  btnOrderImage.src = "./assets/img/plus-circle-svgrepo-com.svg";
+  btnStopImage.src = "./assets/img/hand-svgrepo-com.svg";
   btnOrderImage.classList.remove("btn-disabled");
   btnStopImage.classList.remove("btn-disabled");
   winner.innerText = "";
@@ -73,8 +73,8 @@ const turnPlayerEnd = ({ pointsPlayers, score, divCardPlayers, deck }) => {
   console.log("hello");
   btnStop.disabled = true;
   btnOrder.disabled = true;
-  btnOrderImage.src = "/public/assets/img/plus-disabled-circle-svgrepo-com.svg";
-  btnStopImage.src = "/public/assets/img/hand-disabled-svgrepo-com.svg";
+  btnOrderImage.src = "./assets/img/plus-disabled-circle-svgrepo-com.svg";
+  btnStopImage.src = "./assets/img/hand-disabled-svgrepo-com.svg";
   btnOrderImage.classList.add("btn-disabled");
   btnStopImage.classList.add("btn-disabled");
   turnComputer(pointsPlayers, score, divCardPlayers, deck);
