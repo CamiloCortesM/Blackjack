@@ -18,7 +18,9 @@ const btnOrder = document.querySelector("#btnOrder"),
   btnStop = document.querySelector("#btnStop"),
   btnNew = document.querySelector("#btnNew"),
   btnOrderImage = document.querySelector("#btnOrderImage"),
-  btnStopImage = document.querySelector("#btnStopImage");
+  btnStopImage = document.querySelector("#btnStopImage"),
+  descripWinner = document.querySelector(".description__winner"),
+  winner = document.querySelector(".winner--text");
 
 const divCardPlayers = document.querySelectorAll(".divCards"),
   score = document.querySelectorAll("small");
@@ -39,6 +41,9 @@ const initGame = (numPlayers = 2) => {
   btnStopImage.src = "/public/assets/img/hand-svgrepo-com.svg";
   btnOrderImage.classList.remove("btn-disabled");
   btnStopImage.classList.remove("btn-disabled");
+  winner.innerText = "";
+  descripWinner.innerText = "";
+  descripWinner.classList.remove("win", "lose", "draw");
 };
 
 //Events
