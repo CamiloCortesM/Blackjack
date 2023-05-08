@@ -16,7 +16,9 @@ let pointsPlayers = [];
 
 const btnOrder = document.querySelector("#btnOrder"),
   btnStop = document.querySelector("#btnStop"),
-  btnNew = document.querySelector("#btnNew");
+  btnNew = document.querySelector("#btnNew"),
+  btnOrderImage = document.querySelector("#btnOrderImage"),
+  btnStopImage = document.querySelector("#btnStopImage");
 
 const divCardPlayers = document.querySelectorAll(".divCards"),
   score = document.querySelectorAll("small");
@@ -33,6 +35,10 @@ const initGame = (numPlayers = 2) => {
   divCardPlayers.forEach((elem) => (elem.innerHTML = ""));
   btnStop.disabled = false;
   btnOrder.disabled = false;
+  btnOrderImage.src = "/public/assets/img/plus-circle-svgrepo-com.svg";
+  btnStopImage.src = "/public/assets/img/hand-svgrepo-com.svg";
+  btnOrderImage.classList.remove("btn-disabled");
+  btnStopImage.classList.remove("btn-disabled");
 };
 
 //Events
@@ -43,23 +49,28 @@ btnOrder.addEventListener("click", () => {
   createCard(card, 0, divCardPlayers);
 
   if (pointsPlayer > 21) {
-    btnStop.disabled = true;
-    btnOrder.disabled = true;
-    turnComputer(pointsPlayers, score, divCardPlayers, deck);
+    turnPlayerEnd({ pointsPlayers, score, divCardPlayers, deck });
   } else if (pointsPlayer === 21) {
     console.warn("21, amazing!");
-    btnStop.disabled = true;
-    btnOrder.disabled = true;
-    turnComputer(pointsPlayers, score, divCardPlayers, deck);
+    turnPlayerEnd({ pointsPlayers, score, divCardPlayers, deck });
   }
 });
 
 btnStop.addEventListener("click", () => {
-  btnStop.disabled = true;
-  btnOrder.disabled = true;
-  turnComputer(pointsPlayers, score, divCardPlayers, deck);
+  turnPlayerEnd({ pointsPlayers, score, divCardPlayers, deck });
 });
 
 btnNew.addEventListener("click", () => {
   initGame();
 });
+
+const turnPlayerEnd = ({ pointsPlayers, score, divCardPlayers, deck }) => {
+  console.log("hello");
+  btnStop.disabled = true;
+  btnOrder.disabled = true;
+  btnOrderImage.src = "/public/assets/img/plus-disabled-circle-svgrepo-com.svg";
+  btnStopImage.src = "/public/assets/img/hand-disabled-svgrepo-com.svg";
+  btnOrderImage.classList.add("btn-disabled");
+  btnStopImage.classList.add("btn-disabled");
+  turnComputer(pointsPlayers, score, divCardPlayers, deck);
+};

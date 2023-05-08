@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap");
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,7 +6,7 @@
 }
 
 #app {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   background: radial-gradient(
     ellipse at center,
     rgb(32, 109, 10) 40%,
@@ -155,7 +155,7 @@
   text-align: center;
 }
 
-.score{
+.score {
   width: 100%;
   text-align: center;
   font-size: 1.2rem;
@@ -167,13 +167,14 @@ h2 {
   text-transform: uppercase;
 }
 
-.buttons{
+.buttons {
   width: 100%;
   height: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
   border-right: 2px solid rgb(250, 205, 92);
-
 }
 
 .item_card {
@@ -182,7 +183,7 @@ h2 {
   margin-left: -75px;
 }
 
-.table__win{
+.table__win {
   width: 100%;
   height: 100%;
   display: grid;
@@ -191,16 +192,32 @@ h2 {
   align-items: center;
 }
 
-.table__win--title{
+.table__win--title {
   width: 100%;
   height: 100%;
   background-color: rgb(250, 205, 92);
   text-align: center;
 }
-.winner{
+.winner {
   text-align: center;
   color: white;
-  font-size: .9rem;
+  font-size: 0.9rem;
+}
+
+.btn {
+  width: 60%;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+}
+
+.btn__image {
+  width: 40px;
+  cursor: pointer;
+}
+
+.btn-disabled{
+  cursor: context-menu;
 }
 
 #computer-cards,

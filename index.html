@@ -38,13 +38,15 @@
             <div class="score"><small>0</small></div>
           </div>
           <div class="buttons">
-              <button id="btnNew" class="btn btn-danger">New Game</button>
-              <button id="btnOrder" disabled="disabled" class="btn btn-primary">
-                Order card
-              </button>
-              <button id="btnStop" disabled="disabled" class="btn btn-primary">
-                Stop
-              </button>
+            <button id="btnNew" class="btn">
+              <img class="btn__image" src="/public/assets/img/reset-svgrepo-com.svg" />
+            </button>
+            <button id="btnOrder" disabled="disabled" class="btn">
+              <img id="btnOrderImage" class="btn__image btn-disabled" src="/public/assets/img/plus-disabled-circle-svgrepo-com.svg" />
+            </button>
+            <button id="btnStop" disabled="disabled" class="btn">
+              <img id="btnStopImage" class="btn__image btn-disabled" src="/public/assets/img/hand-disabled-svgrepo-com.svg" />
+            </button>
           </div>
           <div class="table__win">
             <div class="table__win--title"><h2>Winner</h2></div>
