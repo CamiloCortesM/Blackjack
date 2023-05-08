@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap');
 * {
   box-sizing: border-box;
   margin: 0;
@@ -5,6 +6,7 @@
 }
 
 #app {
+  font-family: 'Poppins', sans-serif;
   background: radial-gradient(
     ellipse at center,
     rgb(32, 109, 10) 40%,
@@ -57,6 +59,12 @@
 
 .fotter__table {
   grid-area: footer;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: 1fr;
+  grid-template-rows: 30px 1fr;
+  padding: 10px;
 }
 
 .table__half-circle {
@@ -114,8 +122,58 @@
 .divCards {
   margin-left: 37.5px;
   display: flex;
- justify-content: center;
+  justify-content: center;
   width: 100%;
+}
+
+.table__score {
+  display: grid;
+  grid-row: 2;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+  height: 80%;
+  border: 2px solid rgb(250, 205, 92);
+}
+
+.score__player {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  border-right: 2px solid rgb(250, 205, 92);
+}
+
+.score--title {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(250, 205, 92);
+  text-align: center;
+}
+
+.score{
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+  color: white;
+}
+
+h2 {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+}
+
+.buttons{
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-right: 2px solid rgb(250, 205, 92);
+
 }
 
 .item_card {
@@ -124,7 +182,28 @@
   margin-left: -75px;
 }
 
+.table__win{
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  align-items: center;
+}
+
+.table__win--title{
+  width: 100%;
+  height: 100%;
+  background-color: rgb(250, 205, 92);
+  text-align: center;
+}
+.winner{
+  text-align: center;
+  color: white;
+  font-size: .9rem;
+}
+
 #computer-cards,
 #player-cards {
   height: 240px;
-} 
+}

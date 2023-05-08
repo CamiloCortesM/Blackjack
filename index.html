@@ -16,17 +16,6 @@
         </div>
       </div>
       <div class="body__table">
-        <div class="row mt-2">
-          <div class="col text-center">
-            <button id="btnNew" class="btn btn-danger">New Game</button>
-            <button id="btnOrder" disabled="disabled" class="btn btn-primary">
-              Order card
-            </button>
-            <button id="btnStop" disabled="disabled" class="btn btn-primary">
-              Stop
-            </button>
-          </div>
-        </div>
         <div class="player container">
           <div class="col">
             <div id="player-cards" class="divCards"></div>
@@ -40,11 +29,26 @@
       </div>
       <div class="fotter__table">
         <div class="table__score">
-          <div class="table__score--player">
-            <h1>Player 1 - <div class="score"><small>0</small></div></h1>
+          <div class="table__score--player score__player">
+            <div class="score--title"><h2>Player 1</h2></div>
+            <div class="score"><small>0</small></div>
           </div>
-          <div class="table__score--computer">
-            <h1>Computer - <div class="score"><small>0</small></div></h1>
+          <div class="table__score--computer score__player">
+            <div class="score--title"><h2>Computer</h2></div>
+            <div class="score"><small>0</small></div>
+          </div>
+          <div class="buttons">
+              <button id="btnNew" class="btn btn-danger">New Game</button>
+              <button id="btnOrder" disabled="disabled" class="btn btn-primary">
+                Order card
+              </button>
+              <button id="btnStop" disabled="disabled" class="btn btn-primary">
+                Stop
+              </button>
+          </div>
+          <div class="table__win">
+            <div class="table__win--title"><h2>Winner</h2></div>
+            <div class="winner"><p>Computer</p></div>
           </div>
         </div>
       </div>
