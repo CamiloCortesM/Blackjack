@@ -15,12 +15,12 @@ const determineWinner = (pointsPlayers) => {
         (descripWinner.innerText = "You Lose"))
       : (minimumPoints > pointsComputer && minimumPoints <= 21) ||
         pointsComputer > 21
-      ? (winner.innerText = "Player",
-      descripWinner.classList.add("win"),
-      (descripWinner.innerText = "You Win"))
-      : (winner.innerText = "Draw",
-      descripWinner.classList.add("draw"),
-      (descripWinner.innerText = "no body won"));
+      ? ((winner.innerText = "Player"),
+        descripWinner.classList.add("win"),
+        (descripWinner.innerText = "You Win"))
+      : ((winner.innerText = "Draw"),
+        descripWinner.classList.add("draw"),
+        (descripWinner.innerText = "no body won"));
   }, 100);
 };
 //turn of machine
@@ -33,11 +33,17 @@ const determineWinner = (pointsPlayers) => {
  * @param {Object} divCardPlayers
  * @param {Array<String>} deck
  */
-export const turnComputer = (pointsPlayers, score, divCardPlayers, deck) => {
+export const turnComputer = async (
+  pointsPlayers,
+  score,
+  divCardPlayers,
+  deck
+) => {
   const minimumPoints = pointsPlayers[0];
   if (!minimumPoints) throw new Error("minimunPoints is neccesary");
   if (!deck) throw new Error("deck is neccesary");
   do {
+    await new Promise((resolve) => setTimeout(resolve, 800));
     const card = orderCard(deck);
     accumulatePoints(card, pointsPlayers.length - 1, pointsPlayers, score);
     createCard(card, pointsPlayers.length - 1, divCardPlayers);
@@ -45,5 +51,6 @@ export const turnComputer = (pointsPlayers, score, divCardPlayers, deck) => {
     pointsPlayers[pointsPlayers.length - 1] < minimumPoints &&
     minimumPoints <= 21
   );
+  await new Promise((resolve) => setTimeout(resolve, 1000));
   determineWinner(pointsPlayers);
 };
