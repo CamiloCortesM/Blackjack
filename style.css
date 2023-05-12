@@ -85,8 +85,7 @@
   align-items: center;
   grid-template-columns: 300px repeat(2, 1fr) 300px;
   grid-template-rows: 1fr;
-  grid-template-areas:
-    ". player computer .";
+  grid-template-areas: ". player computer .";
   width: 100%;
   height: 100%;
 }
@@ -97,7 +96,7 @@
   justify-items: center;
   align-items: center;
   grid-template-columns: 1fr;
-  grid-template-rows:1fr;
+  grid-template-rows: 1fr;
   padding: 10px;
 }
 
@@ -109,6 +108,7 @@
   margin: 0 auto;
   width: 60%;
   height: 200%;
+  max-height: 500px;
   border-radius: 50%;
   transform: translateY(-50%);
   border: 7px solid rgb(46, 138, 11);
@@ -182,10 +182,12 @@
 }
 
 .score--title {
+  display: grid;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
   background-color: rgb(250, 205, 92);
-  text-align: center;
 }
 
 .score {
@@ -227,10 +229,12 @@ h2 {
 }
 
 .table__win--title {
+  display: grid;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
   background-color: rgb(250, 205, 92);
-  text-align: center;
 }
 .winner {
   text-align: center;
@@ -259,10 +263,134 @@ h2 {
   height: 240px;
 }
 
-@media (min-width: 640px) {
+@media (max-width: 640px) {
+  #app {
+    grid-template-rows: repeat(7, 1fr);
+    grid-template-areas:
+      "header"
+      "body"
+      "body"
+      "body"
+      "body"
+      "footer"
+      "footer";
+  }
+
+  .body__table {
+    overflow: hidden;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      "player"
+      "computer";
+  }
+  .description {
+    grid-template-columns: 20px 1fr 1fr 1fr 20px;
+  }
+  .description__title {
+    font-size: 2.4rem;
+  }
+
+  .description__winner {
+    grid-column: 4;
+    font-size: 1.6rem;
+  }
+
+  .table__half-circle {
+    display: none;
+  }
+
+  .table__score {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+  .table__score--player {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .table__score--computer {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .table__win {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .buttons {
+    grid-column: 1 / 4;
+    grid-row: 2;
+    border-top: 2px solid rgb(250, 205, 92);
+    border-right: none;
+  }
+
+  .btn__image {
+    width: 80%;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  .item_card {
+    width: 120px;
+    height: 180px;
+  }
 }
 
-@media (min-width: 768px) {
+@media only screen and (min-width: 640px) and (max-width: 1024px) {
+  #app {
+    grid-template-areas:
+      "header"
+      "body"
+      "body"
+      "body"
+      "body"
+      "footer";
+  }
+  .header__table {
+    grid-template-rows: 1fr;
+  }
+
+  .body__table {
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      ". player player ."
+      ". computer computer .";
+  }
+  .description {
+    grid-template-columns: 3px 1fr 1fr 1fr 3px;
+  }
+  .description__title {
+    font-size: 2.4rem;
+  }
+
+  .description__winner {
+    font-size: 2rem;
+  }
+
+  .table__half-circle {
+    width: 60%;
+    height: 230%;
+    max-height: 300px;
+  }
+
+  .table__box {
+    width: 150px;
+    height: 80px;
+  }
+
+  .table__box--lines {
+    width: 15px;
+    left: 12px;
+    box-shadow: -7px 0px 0px rgba(0, 0, 0, 0.13), 28px 0px 0px rgb(92, 38, 7),
+      20px 0px 0px rgba(0, 0, 0, 0.13), 58px 0px 0px rgb(92, 38, 7),
+      50px 0px 0px rgba(0, 0, 0, 0.13), 88px 0px 0px rgb(92, 38, 7),
+      80px 0px 0px rgba(0, 0, 0, 0.13), 118px 0px 0px rgb(92, 38, 7),
+      110px 0px 0px rgba(0, 0, 0, 0.13);
+  }
 }
 
 @media (min-width: 1024px) {
@@ -278,7 +406,6 @@ h2 {
   }
 
   .table__half-circle {
-    width: 60%;
     height: 150%;
   }
 
@@ -289,6 +416,7 @@ h2 {
 
   .table__box--lines {
     width: 25px;
+    left: 20px;
     box-shadow: -7px 0px 0px rgba(0, 0, 0, 0.13), 37px 0px 0px rgb(92, 38, 7),
       31px 0px 0px rgba(0, 0, 0, 0.13), 74px 0px 0px rgb(92, 38, 7),
       68px 0px 0px rgba(0, 0, 0, 0.13), 112px 0px 0px rgb(92, 38, 7),
@@ -298,11 +426,6 @@ h2 {
 
   .body__table {
     grid-template-columns: 150px repeat(2, 1fr) 150px;
-  }
-
-  .item_card {
-    height: 170px;
-    width: 115px;
   }
 }
 
@@ -340,13 +463,6 @@ h2 {
   .body__table {
     grid-template-columns: 100px repeat(2, 1fr) 100px;
   }
-
-  .item_card {
-    height: 230px;
-    width: 150px;
-    left: 100px;
-    margin-left: -75px;
-  }
 }
 
 @media (min-width: 1536px) {
@@ -354,12 +470,12 @@ h2 {
     width: 60%;
     height: 200%;
   }
-  
+
   .table__box {
     width: 280px;
     height: 130px;
   }
-  
+
   .table__box--lines {
     width: 30px;
     box-shadow: -7px 0px 0px rgba(0, 0, 0, 0.13), 42px 0px 0px rgb(92, 38, 7),

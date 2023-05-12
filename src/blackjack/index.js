@@ -70,7 +70,6 @@ btnNew.addEventListener("click", () => {
 });
 
 const turnPlayerEnd = ({ pointsPlayers, score, divCardPlayers, deck }) => {
-  console.log("hello");
   btnStop.disabled = true;
   btnOrder.disabled = true;
   btnOrderImage.src = "./assets/img/plus-disabled-circle-svgrepo-com.svg";
